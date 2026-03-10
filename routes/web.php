@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\ShoppingListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::post('login', [AuthController::class, 'login']);
 // 会員登録
 // 認可処理
+Route::prefix('/shopping_list')->group(function () {
+    Route::get('/list', [ShoppingListController::class, 'list'])->name('flont.list');
+});
 // form入力テスト
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test/input', [TestController::class, 'input']);
