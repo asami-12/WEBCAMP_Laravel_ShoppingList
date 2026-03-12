@@ -16,7 +16,13 @@ class ShoppingListController extends Controller
      */
     public function list()
     {
-        return view('shopping_list.list');
+        // 一覧の取得
+        $list = Shopping_listModel::where('user_id', Auth::id())->orderBy('name')->get();
+        $sql = Shopping_listModel::where('user_id', Auth::id())->orderBy('name')->toSql();
+        // echo "<pre>\n"; var_dump($sql, $list); exit;
+        // var_dump($sql);
+
+        return view('shopping_list.list', ['list' => $list]);
     }
     /**
      * 買うもの　登録
@@ -42,4 +48,6 @@ class ShoppingListController extends Controller
         //  リダイレクト    
         return redirect('shopping_list/list');
     }
+
+    
 }
