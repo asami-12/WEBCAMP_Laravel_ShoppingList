@@ -21,8 +21,11 @@ Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::post('login', [AuthController::class, 'login']);
 // 会員登録
 // 認可処理
-Route::prefix('/shopping_list')->group(function () {
-    Route::get('/list', [ShoppingListController::class, 'list'])->name('flont.list');
+Route::middleware(['auth'])->group(function () {
+    Route::prefix('/shopping_list')->group(function () {
+        Route::get('/list', [ShoppingListController::class, 'list'])->name('flont.list');
+    });
+    Route::get('/logout', [AuthController::class, 'logout']);
 });
 // form入力テスト
 Route::get('/test', [TestController::class, 'index']);
