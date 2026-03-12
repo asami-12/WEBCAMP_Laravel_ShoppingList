@@ -24,6 +24,7 @@ Route::post('login', [AuthController::class, 'login']);
 Route::middleware(['auth'])->group(function () {
     Route::prefix('/shopping_list')->group(function () {
         Route::get('/list', [ShoppingListController::class, 'list'])->name('flont.list');
+        Route::post('register', [ShoppingListController::class, 'register']);
     });
     Route::get('/logout', [AuthController::class, 'logout']);
 });
