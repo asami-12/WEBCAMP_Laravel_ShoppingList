@@ -16,12 +16,18 @@ class ShoppingListController extends Controller
      */
     public function list()
     {
+        // 
+        $per_page = 15;
         // 一覧の取得
-        $list = Shopping_listModel::where('user_id', Auth::id())->orderBy('name')->get();
+        $list = Shopping_listModel::where('user_id', Auth::id())
+                                  ->orderBy('name')
+                                  ->paginate($per_page);
+                                //   ->get();
+        /*
         $sql = Shopping_listModel::where('user_id', Auth::id())->orderBy('name')->toSql();
         // echo "<pre>\n"; var_dump($sql, $list); exit;
         // var_dump($sql);
-
+       */
         return view('shopping_list.list', ['list' => $list]);
     }
     /**
