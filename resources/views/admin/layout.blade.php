@@ -6,6 +6,11 @@
         <title>買い物リスト 管理画面</title>
     </head>
     <body>
+    @auth('admin')
+        <a href="/admin/top">管理画面Top</a><br>
+        <a href="/admin/user/list">ユーザ一覧</a><br>
+        <a href="/admin/logout">ログアウト</a><br>
+    @endauth
         @yield('contents')
     </body>
 </html>
