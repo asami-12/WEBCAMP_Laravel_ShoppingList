@@ -15,6 +15,6 @@
             email：<input type="text" name="email" value="{{ old('email') }}"><br>
             パスワード：<input type="password" name="password"><br>
             <button>ログインする</button><br>
-            <!-- 会員登録 -->
+            <a href="{{ route('front.user.register') }}">会員登録</a>
         </form>
 @endsection

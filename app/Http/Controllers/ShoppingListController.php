@@ -19,7 +19,7 @@ class ShoppingListController extends Controller
     public function list()
     {
         // 
-        $per_page = 15;
+        $per_page = 20;
         // 一覧の取得
         $list = Shopping_listModel::where('user_id', Auth::id())
                                   ->orderBy('name')
@@ -53,8 +53,8 @@ class ShoppingListController extends Controller
         // リスト登録成功
         $request->session()->flash('front.list_register_success', true);
 
-        //  リダイレクト    
-        return redirect('shopping_list/list');
+        //  リダイレクト
+        return redirect(route('front.list'));    
     }
 
     /**
@@ -70,7 +70,7 @@ class ShoppingListController extends Controller
             $request->session()->flash('front.list_delete_success', true);
         }
         // 一覧に遷移
-        return redirect('/shopping_list/list');
+        return redirect(route('front.list'));
 
     }
     /**
@@ -118,7 +118,7 @@ class ShoppingListController extends Controller
             }
 
             // 一覧に遷移
-            return redirect('/shopping_list/list');
+            return redirect(route('front.list'));
 
         
     }

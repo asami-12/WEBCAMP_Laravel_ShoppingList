@@ -15,6 +15,5 @@
             email：<input type="text" name="email" value="{{ old('email') }}"><br>
             パスワード：<input type="password" name="password"><br>
             <button>送信する</button><br>
-            <!-- 会員登録 -->
         </form>
 @endsection
