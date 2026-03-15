@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ShoppingListController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +28,16 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('/shopping_list')->group(function () {
         Route::get('/list', [ShoppingListController::class, 'list'])->name('flont.list');
         Route::post('register', [ShoppingListController::class, 'register']);
+        Route::delete('/delete/{shopping_list_id}', [ShoppingListController::class, 'delete'])->whereNumber('shopping_list_id')->name('delete');
+        Route::post('/complete/{shopping_list_id}', [ShoppingListController::class, 'complete'])->whereNumber('shopping_list_id')->name('complete');
     });
     Route::get('/logout', [AuthController::class, 'logout']);
+});
+// 管理画面
+Route::prefix('/admin')->group(function (){
+    Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
+    Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
 });
 // form入力テスト
 Route::get('/test', [TestController::class, 'index']);
