@@ -37,7 +37,10 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('/admin')->group(function (){
     Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
     Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
-    Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
+    Route::middleware(['auth:admin'])->group(function (){
+        Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
+        Route::get('/logout', [AdminAuthController::class, 'logout']);
+    });
 });
 // form入力テスト
 Route::get('/test', [TestController::class, 'index']);
