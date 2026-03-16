@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShoppingListController;
 use App\Http\Controllers\CompletedShoppingListController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
@@ -27,7 +28,7 @@ Route::post('login', [AuthController::class, 'login']);
 // 会員登録
 Route::prefix('/user')->group(function (){
     Route::get('/register', [UserController::class, 'index'])->name('front.user.register');
-    Route::post('/register', [UserController::class, 'register'])->name('fromt.user.register.post');
+    Route::post('/register', [UserController::class, 'register'])->name('front.user.register.post');
 });
 // 認可処理
 Route::middleware(['auth'])->group(function () {

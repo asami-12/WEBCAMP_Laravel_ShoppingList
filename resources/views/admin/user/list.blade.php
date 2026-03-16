@@ -12,7 +12,7 @@
             <tr>
                 <td>{{ $user->id }}
                 <td>{{ $user->name }}
-                <td>{{ $user->lists_num }}
+                <td>{{ $user->list_num }}
     @endforeach
         </table>
 @endsection
