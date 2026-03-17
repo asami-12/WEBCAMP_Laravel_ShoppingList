@@ -19,7 +19,7 @@ class ShoppingListController extends Controller
     public function list()
     {
         // 
-        $per_page = 20;
+        $per_page = 3;
         // 一覧の取得
         $list = Shopping_listModel::where('user_id', Auth::id())
                                   ->orderBy('name')

@@ -16,7 +16,7 @@ class CompletedShoppingListController extends Controller
 
     public function list()
     {
-        $per_page = 20;
+        $per_page = 3;
         $list = $this->getListBuilder()
                      ->paginate($per_page);
         return view('shopping_list.completed_list', ['list' => $list]);

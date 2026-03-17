@@ -22,6 +22,7 @@ class UserController extends Controller
     {
         // validate済みのデータの取得
         $datum = $request->validated();
+
         // パスワードのハッシュ化
         $datum['password'] = Hash::make($datum['password']);
         // var_dump($datum); exit;

@@ -40,7 +40,7 @@
                 <th>「買うもの」名
             @foreach ($list as $item)
             <tr>
-                <td>{{ $item->created_at }}
+                <td>{{ $item->created_at->format('Y/m/d') }}
                 <td>{{ $item->name }}
                 <td>
                     <form action="{{ route('complete', ['shopping_list_id' => $item->id]) }}" method="post">

@@ -23,7 +23,7 @@
             @foreach ($list as $item)
             <tr>
                 <td>{{ $item->name}}
-                <td>{{ $item->created_at }}
+                <td>{{ $item->created_at->format('Y/m/d') }}
             @endforeach
          </table>
          <!-- ページネーション -->
